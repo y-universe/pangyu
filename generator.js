@@ -3,11 +3,12 @@ const PI = 3.14159;
 function startGenerator () {
   // generateBody();
   generateType();
-  generateAge();
+  var age = generateAge();
   generateHair();
   generateAttribute();
-  // generateCharacter();
-  // generateSuperPower();
+  generateCharacter(age);
+  generateSuperPower();
+  // generateSuperPowerGrowth(age);
   generateGift();
 
 }
@@ -27,11 +28,18 @@ function generateType () {
     type.innerHTML = '瘦宇';
 }
 
-function generateSuperPower (growup) {
-  if (growup === 1) {
+function generateSuperPower () {
+  randomData('superpowerdata', Superpower_data);
+}
+
+function generateSuperPowerGrowth (age) {
+  if (age >18) {
     var randomNumber = Math.ceil(Math.random() * 1000);
     if (randomNumber === 1000) {
       randomData('superpowerdata', Special_data);
+    }
+    else {
+      randomData('superpowerdata', Superpower_data);
     }
   }
   else {
@@ -53,15 +61,9 @@ function generateBody () {
 
 function generateAge () {
   var gH = Math.ceil(Math.random() * 29);
-  if (gH > 18) {
-    generateCharacter(1);
-    generateSuperPower(1);
-  } else {
-    generateCharacter(0);
-    generateSuperPower(0);
-  }
   var text1 = document.getElementById('age');
   text1.innerHTML = gH;
+  return gH;
 }
 function generateHair () {
   randomData('hairstyle', Hair_data);
@@ -70,8 +72,8 @@ function generateHair () {
 function generateAttribute () {
   randomData('attribute', Attribute_data);
 }
-function generateCharacter (growup) {
-  if (growup === 1) {
+function generateCharacter (age) {
+  if (age > 18) {
     randomData('character', Character_data);
   } else {
     randomData('character', Character_data_child);
