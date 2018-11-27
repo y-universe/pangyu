@@ -1,9 +1,8 @@
 const PI = 3.14159;
 
 function startGenerator () {
-  // generateBody();
-  generateType();
   var age = generateAge();
+  generateType(age);
   generateHair();
   generateAttribute();
   generateCharacter(age);
@@ -13,16 +12,18 @@ function startGenerator () {
 
 }
 
-function generateType () {
+function generateType (age) {
   var type = document.getElementById('type');
-  var randomNumber = Math.ceil(Math.random() * 10000);
-  if (randomNumber === 10000)
+  var randomNumber = Math.ceil(Math.random() * 1000);
+    // randomNumber=1000;
+    // console.log(age);
+  if (randomNumber === 1000 && age === 29)
     type.innerHTML = '冠军宇';
-  else if (randomNumber === 531 | randomNumber === 722)
+  else if (randomNumber === 1000 || randomNumber === 531 || randomNumber === 722)
     type.innerHTML = '红衣宇';
-  else if (randomNumber % 722 === 0)
+  else if (randomNumber % 22 === 0)
     type.innerHTML = '老板宇';
-  else if (randomNumber > 9000)
+  else if (randomNumber > 900)
     type.innerHTML = '胖宇';
   else
     type.innerHTML = '瘦宇';
@@ -60,10 +61,16 @@ function generateBody () {
 }
 
 function generateAge () {
-  var gH = Math.ceil(Math.random() * 29);
+  // var gH = Math.ceil(Math.random() * 29);
+
+  var age =  Math.round(normalDistribution(24,5));
+  if (age>29){
+      age =29;
+  }
+
   var text1 = document.getElementById('age');
-  text1.innerHTML = gH;
-  return gH;
+  text1.innerHTML = age;
+  return age;
 }
 function generateHair () {
   randomData('hairstyle', Hair_data);
