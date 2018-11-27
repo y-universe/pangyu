@@ -21,6 +21,8 @@ function generateType (age) {
     type.innerHTML = '冠军宇';
   else if (randomNumber === 1000 || randomNumber === 531 || randomNumber === 722)
     type.innerHTML = '红衣宇';
+  else if (randomNumber % 24 === 0)
+    type.innerHTML = '西装宇';
   else if (randomNumber % 22 === 0)
     type.innerHTML = '老板宇';
   else if (randomNumber > 900)
