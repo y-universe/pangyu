@@ -14,18 +14,28 @@ function startGenerator () {
 
 function generateType (age) {
   var type = document.getElementById('type');
-  var randomNumber = Math.ceil(Math.random() * 1000);
-    // randomNumber=1000;
+  var message = document.getElementById('message');
+  var randomNumber = Math.ceil(Math.random() * 100);
+    // randomNumber=10;
     // console.log(age);
-  if (randomNumber === 1000 && age === 29)
+  if (randomNumber === 100 && age === 29){
     type.innerHTML = '冠军宇';
-  else if (randomNumber === 1000 || randomNumber === 531 || randomNumber === 722)
+    bingo('恭喜抽中特等奖！快把绝版冠军宇带回家！');
+  }
+  else if (randomNumber === 100 || randomNumber === 31){
     type.innerHTML = '红衣宇';
-  else if (randomNumber % 24 === 0)
+    bingo('运气爆表，百年不遇的红衣宇对你挥手！');
+  }
+
+  else if ([6,17,7,22].indexOf(randomNumber) !=-1){
     type.innerHTML = '西装宇';
-  else if (randomNumber % 22 === 0)
+    bingo('恭喜抽中限量款！');
+  }
+  else if ([10,24,11,12].indexOf(randomNumber) !=-1){
     type.innerHTML = '老板宇';
-  else if (randomNumber > 900)
+    bingo('恭喜抽中限量款！');
+  }
+  else if (randomNumber > 60)
     type.innerHTML = '胖宇';
   else
     type.innerHTML = '瘦宇';
@@ -91,19 +101,38 @@ function generateCharacter (age) {
 
 function generateGift () {
   var gift = document.getElementById('gift');
-  var randomNumber = Math.ceil(Math.random() * 1000);
-  if (randomNumber === 1000)
+  var message2 = document.getElementById('message2');
+  var randomNumber = Math.ceil(Math.random() * 100);
+  // randomNumber = 1;
+  if (randomNumber === 100){
     gift.innerHTML = '冠军毛巾一条';
-  else if (randomNumber === 722)
+    bingo('赠品似乎有点意思呢！');
+    message2.innerHTML = '上面还有汗水的气味';
+  }
+  else if (randomNumber === 7||randomNumber===22){
     gift.innerHTML = '舞撼兄弟大师课一次';
-  else if (randomNumber === 531)
+    bingo('赠品似乎有点意思呢！');
+    message2.innerHTML = '和韩宇老师一起跳起来！';
+  }
+  else if (randomNumber === 5||randomNumber===31){
     gift.innerHTML = '亲手整理过的hardihood白色帽子一顶';
-  else if (randomNumber === 1)
+    bingo('赠品似乎有点意思呢！');
+    message2.innerHTML = '摸着帽子就当间接牵手了！';
+  }
+  else if (randomNumber === 1){
     gift.innerHTML = '看腹肌一次';
+    bingo('赠品似乎有点意思呢！');
+    message2.innerHTML = '只许看不许摸！';
+  }
   else if (randomNumber < 100)
     gift.innerHTML = '再扭一次';
   else
     gift.innerHTML = '没有中奖，下次再来~';
+}
+function bingo (text) {
+  var message = document.getElementById('message');
+  message.innerHTML = text;
+  document.getElementById("button").hidden = true;
 }
 
 function normalDistribution (u, v) {
